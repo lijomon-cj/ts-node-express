@@ -1,0 +1,62 @@
+{
+  "name": "zipmex-backend-ts",
+  "version": "2.0.0",
+  "description": "The zipmex API for web application",
+  "main": "app.ts",
+  "scripts": {
+    "start": "npm run build && npm run serve",
+    "serve": "node -r dotenv/config build/server.js",
+    "build": "npm run clean && npm run build-ts",
+    "watch": "npx concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
+    "watch-node": "nodemon -r dotenv/config build/server.js",
+    "clean": "rimraf ./build",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "eslint": "eslint . --ext .js,.ts",
+    "upgrade": "npm update --save-dev && npm update --save"
+  },
+  "author": "lijomon john, akash bhaskar",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "newrelic": "^9.8.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "redis": "^4.6.1",
+    "sequelize": "^6.28.0",
+    "uuid": "^9.0.0",
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.16",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/morgan": "^1.9.4",
+    "@types/newrelic": "^9.4.0",
+    "@types/newrelic__winston-enricher": "^0.1.1",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.32.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/test/**",
+      "**/docs/**",
+      "**/logs/**"
+    ],
+    "delay": 2500
+  }
+}
